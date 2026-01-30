@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RAO SAHAB</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    header{
+      background: #222;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+    }
+
+    nav{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo{
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    ul{
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    ul li a{
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 6px 10px;
+      transition: 0.3s;
+    }
+
+    ul li a:hover{
+      background: white;
+      color: #222;
+      border-radius: 6px;
+    }
+
+    section{
+      padding: 60px 40px;
+      min-height: 100vh;
+    }
+
+    #home{ background: #f1f1f1; }
+    #projects{ background: #e6f7ff; }
+    #questions{ background: #fff7e6; }
+    #about{ background: #e6ffe6; }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">RAO SAHAB</div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENT BELOW HEADER -->
+  <section id="home">
+    <h1>RAO SAHAB</h1>
+    <img src="rao.jpg" height="500px" border="2">
+    <p>PARITOSH YADAV</p>
+  </section>
+
+  <section id="projects">
+    <h1>Projects</h1>
+    <p>HERE ARE THE WORKING PROGRAMS.</p>
+    <br>
+    <a href="frmst.html">FRAMESET QUESTION</a>
+  </section>
+
+  <section id="questions">
+    <h1>Questions</h1>
+  </section>
+
+  <section id="about">
+    <h1>About</h1>
+    <p>KYA HI KAROGE JAANKAR</p>
+  </section>
+
+</body>
+</html>
