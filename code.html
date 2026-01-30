@@ -28,7 +28,8 @@
 </head>
 
 <body>
-
+	<div class="code-box">
+  <button class="copy-btn">Copy</button>
 	<pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -43,8 +44,10 @@
 &lt;/frameset&gt;
 &lt;/html&gt;
 	</code></pre>
+	</div>
 
-
+<div class="code-box">
+  <button class="copy-btn">Copy</button>
 	<pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -78,8 +81,10 @@
 &lt;/body&gt;
 &lt;/html&gt;
 	</code></pre>
+</div>
 
-
+<div class="code-box">
+  <button class="copy-btn">Copy</button>
 	<pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -111,8 +116,10 @@
 &lt;/body&gt;
 &lt;/html&gt;
 	</code></pre>
+</div>
 
-
+<div class="code-box">
+  <button class="copy-btn">Copy</button>
 	<pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -147,8 +154,10 @@
 &lt;/body&gt;
 &lt;/html&gt;
 	</code></pre>
+</div>
 
-
+<div class="code-box">
+  <button class="copy-btn">Copy</button>
 	<pre><code>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -186,6 +195,20 @@
 &lt;/body&gt;
 &lt;/html&gt;
 	</code></pre>
+</div>
+	
+	<script>
+  let buttons = document.querySelectorAll(".copy-btn");
+
+  buttons.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      let code = btn.parentElement.querySelector("code").innerText;
+      navigator.clipboard.writeText(code);
+      alert("✅ Copied!");
+    });
+  });
+</script>
 
 </body>
 </html>
+
