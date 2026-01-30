@@ -13,10 +13,6 @@
       font-family: Arial, sans-serif;
     }
 
-    html{
-      scroll-behavior: smooth; /* ✅ smooth scroll */
-    }
-
     header{
       background: #222;
       padding: 15px 40px;
@@ -29,7 +25,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap; /* ✅ mobile friendly */
+      flex-wrap: wrap;
       gap: 10px;
     }
 
@@ -43,17 +39,18 @@
       list-style: none;
       display: flex;
       gap: 25px;
-      flex-wrap: wrap; /* ✅ mobile friendly */
+      flex-wrap: wrap;
     }
 
     ul li a{
       color: white;
-      text-decoration: none;
+      text-decoration: none; /* ✅ remove underline */
       font-size: 18px;
       padding: 6px 10px;
       transition: 0.3s;
       border-radius: 6px;
       display: inline-block;
+      cursor: pointer;
     }
 
     ul li a:hover{
@@ -61,35 +58,42 @@
       color: #222;
     }
 
-    /* ✅ Active tab (ONLY on click) */
+    /* ✅ Active tab */
     ul li a.active{
       background: white;
       color: #222;
-      border-radius: 6px;
     }
 
-    section{
+    /* ✅ Sections */
+    .page{
       padding: 60px 40px;
-      min-height: 100vh;
+      min-height: calc(100vh - 70px);
+      display: none;  /* ✅ by default hidden */
     }
-    #projects a{
-  text-decoration: none; /* ✅ remove underline */
-  color: blue;
-  font-size: 18px;
-}
 
-#projects a:hover{
- 
-  color: red;
-}
+    /* ✅ show active page only */
+    .page.active-page{
+      display: block;
+    }
 
-
+    /* Backgrounds */
     #home{ background: #f1f1f1; }
     #projects{ background: #e6f7ff; }
     #questions{ background: #fff7e6; }
     #about{ background: #e6ffe6; }
 
-    /* ✅ Responsive for small screens */
+    /* ✅ projects links underline remove */
+    #projects a{
+      text-decoration: none;
+      color: blue;
+      font-size: 18px;
+    }
+    #projects a:hover{
+      color: red;
+      text-decoration: underline;
+    }
+
+    /* ✅ Responsive */
     @media (max-width: 600px){
       header{
         padding: 15px 20px;
@@ -110,7 +114,6 @@
         font-size: 16px;
       }
     }
-    
   </style>
 </head>
 
@@ -122,16 +125,16 @@
       <div class="logo">RAO SAHAB</div>
 
       <ul>
-        <li><a href="#home" class="navlink active">Home</a></li>
-        <li><a href="#projects" class="navlink">Projects</a></li>
-        <li><a href="#questions" class="navlink">Questions</a></li>
-        <li><a href="#about" class="navlink">About</a></li>
+        <li><a class="navlink active" data-page="home">Home</a></li>
+        <li><a class="navlink" data-page="projects">Projects</a></li>
+        <li><a class="navlink" data-page="questions">Questions</a></li>
+        <li><a class="navlink" data-page="about">About</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ✅ CONTENT BELOW HEADER -->
-  <section id="home">
+  <!-- ✅ PAGES (Only one visible at a time) -->
+  <section id="home" class="page active-page">
     <h1>RAO SAHAB</h1>
     <br>
     <img src="hello.png" height="400" style="border:2px solid black;border-radius:12px;">
@@ -139,38 +142,44 @@
     <p>PARITOSH YADAV</p>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="page">
     <h1>Projects</h1>
     <p>HERE ARE THE WORKING PROGRAMS.</p>
     <br>
-    <h3>FRAMESET >></h3>
-    <a href="frmst.html">click here</a><br><br>
-    <h3>Its Code</h3>
-    <a href="code.html">just click</a>
+    <a href="frmst.html">FRAMESET QUESTION</a><br><br>
+    <a href="code.html">CODE</a>
   </section>
 
-  <section id="questions">
+  <section id="questions" class="page">
     <h1>Questions</h1>
-    <p>Jab man karega tab add kar dunga</p>
+    <p>Write your questions here...</p>
   </section>
 
-  <section id="about">
+  <section id="about" class="page">
     <h1>About</h1>
     <p>KYA HI KAROGE JAANKAR</p>
   </section>
 
-  <!-- ✅ JS: Active tab will change only on click -->
+  <!-- ✅ JS: change page only on click -->
   <script>
     let links = document.querySelectorAll(".navlink");
+    let pages = document.querySelectorAll(".page");
 
     links.forEach(link => {
       link.addEventListener("click", function(){
 
-        // remove active from all links
+        // 1) active tab change
         links.forEach(l => l.classList.remove("active"));
-
-        // add active only to clicked tab
         this.classList.add("active");
+
+        // 2) show/hide pages
+        let pageId = this.getAttribute("data-page");
+
+        pages.forEach(page => page.classList.remove("active-page"));
+        document.getElementById(pageId).classList.add("active-page");
+
+        // 3) always go top when tab changes
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
   </script>
