@@ -3,194 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RAO SAHAB</title>
+  <title>RAO SAHAB - Home</title>
 
   <style>
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    header{
-      background: #222;
-      padding: 15px 40px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    nav{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .logo{
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    ul{
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    ul li a{
-      color: white;
-      text-decoration: none; /* ✅ remove underline */
-      font-size: 18px;
-      padding: 6px 10px;
-      transition: 0.3s;
-      border-radius: 6px;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    ul li a:hover{
-      background: white;
-      color: #222;
-    }
-
-    /* ✅ Active tab */
-    ul li a.active{
-      background: white;
-      color: #222;
-    }
-
-    /* ✅ Sections */
-    .page{
-      padding: 60px 40px;
-      min-height: calc(100vh - 70px);
-      display: none;  /* ✅ by default hidden */
-    }
-
-    /* ✅ show active page only */
-    .page.active-page{
-      display: block;
-    }
-
-    /* Backgrounds */
-    #home{ background: #f1f1f1; }
-    #projects{ background: #e6f7ff; }
-    #questions{ background: #fff7e6; }
-    #about{ background: #e6ffe6; }
-
-    /* ✅ projects links underline remove */
-    #projects a{
-      text-decoration: none;
-      color: blue;
-      font-size: 18px;
-    }
-    #projects a:hover{
-      color: red;
-      text-decoration: underline;
-    }
-
-    /* ✅ Responsive */
-    @media (max-width: 600px){
-      header{
-        padding: 15px 20px;
-      }
-
-      nav{
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      ul{
-        width: 100%;
-        justify-content: space-around;
-        gap: 10px;
-      }
-
-      ul li a{
-        font-size: 16px;
-      }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+    header{background:#222;padding:15px 40px;position:sticky;top:0;z-index:999;}
+    nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+    .logo{color:#fff;font-size:22px;font-weight:bold;}
+    ul{list-style:none;display:flex;gap:25px;flex-wrap:wrap;}
+    ul li a{color:#fff;text-decoration:none;font-size:18px;padding:6px 10px;transition:.3s;border-radius:6px;display:inline-block;}
+    ul li a:hover{background:#fff;color:#222;}
+    ul li a.active{background:#fff;color:#222;}
+    section{padding:60px 40px;min-height:calc(100vh - 70px);background:#f1f1f1;}
+    @media (max-width:600px){
+      header{padding:15px 20px;}
+      nav{flex-direction:column;align-items:flex-start;}
+      ul{width:100%;justify-content:space-around;gap:10px;}
+      ul li a{font-size:16px;}
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ✅ HEADER -->
   <header>
     <nav>
       <div class="logo">RAO SAHAB</div>
-
       <ul>
-        <li><a class="navlink active" data-page="home">Home</a></li>
-        <li><a class="navlink" data-page="projects">Projects</a></li>
-        <li><a class="navlink" data-page="questions">Questions</a></li>
-        <li><a class="navlink" data-page="about">About</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="questions.html">Questions</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ✅ PAGES (Only one visible at a time) -->
-  <section id="home" class="page active-page">
+  <section>
     <h1>RAO SAHAB</h1>
     <br>
     <img src="hello.png" height="400" style="border:2px solid black;border-radius:12px;">
     <br><br>
-    <p>Aa Gaye Aap WELCOME</p>
+    <p>PARITOSH YADAV</p>
   </section>
-
-  <section id="projects" class="page">
-    <h1>Projects</h1>
-    <p>HERE ARE THE WORKING PROGRAMS.</p>
-    <br>
-    <p>1. <a href="frmst.html">FRAMESET QUESTION</a></p>
-    <p>➤ <a href="code.html">CODE</a></p><br><br>
-  </section>
-
-  <section id="questions" class="page">
-    <h1>Questions</h1>
-    <p>Kya karoge Questions ka </p>
-  </section>
-
-  <section id="about" class="page">
-    <h1>About</h1>
-    <img src="mnb.png" width="80px">
-  </section>
-
-  <!-- ✅ JS: change page only on click -->
-  <script>
-    let links = document.querySelectorAll(".navlink");
-    let pages = document.querySelectorAll(".page");
-
-    links.forEach(link => {
-      link.addEventListener("click", function(){
-
-        // 1) active tab change
-        links.forEach(l => l.classList.remove("active"));
-        this.classList.add("active");
-
-        // 2) show/hide pages
-        let pageId = this.getAttribute("data-page");
-
-        pages.forEach(page => page.classList.remove("active-page"));
-        document.getElementById(pageId).classList.add("active-page");
-
-        // 3) always go top when tab changes
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-  </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
